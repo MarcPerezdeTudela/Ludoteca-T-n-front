@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { CategoryModule } from './category/category.module';
 import { AuthorModule } from './author/author.module';
 import { GameModule } from './game/game.module';
+import { CustomerModule } from './customer/customer.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,6 +18,7 @@ import { GameModule } from './game/game.module';
     CategoryModule,
     AuthorModule,
     GameModule,
+    CustomerModule,
     BrowserAnimationsModule,
   ],
   providers: [],
