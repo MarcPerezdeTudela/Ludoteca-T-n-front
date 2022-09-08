@@ -14,6 +14,11 @@ export class CustomerService {
     return this.http.get<Customer[]>(`http://localhost:8080/customer`);
   }
 
+  getCustomer(idCustomer: number): Observable<Customer> {
+    return this.http.get<Customer>(
+      `http://localhost:8080/customer/${idCustomer}`
+    );
+  }
   saveCustomer(customer: Customer): Observable<Customer> {
     let url = `http://localhost:8080/customer`;
     if (customer.id != null) url += `/${customer.id}`;

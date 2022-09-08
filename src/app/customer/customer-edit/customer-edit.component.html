@@ -25,6 +25,9 @@
         name="name"
         required
       />
+      <mat-error *ngIf="nameAlreadyExists">
+        Ya existe un cliente con ese nombre
+      </mat-error>
       <mat-error>El nombre no puede estar vacío</mat-error>
     </mat-form-field>
   </form>

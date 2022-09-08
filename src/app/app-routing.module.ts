@@ -4,6 +4,7 @@ import { AuthorListComponent } from './author/author-list/author-list.component'
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { GameListComponent } from './game/game-list/game-list.component';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+import { LoanListComponent } from './loan/loan-list/loan-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/games', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'authors', component: AuthorListComponent },
   { path: 'games', component: GameListComponent },
   { path: 'customers', component: CustomerListComponent },
+  { path: 'loans', component: LoanListComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

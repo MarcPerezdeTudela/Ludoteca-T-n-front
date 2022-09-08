@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../model/Customer';
@@ -10,6 +11,7 @@ import { Customer } from '../model/Customer';
 })
 export class CustomerEditComponent implements OnInit {
   customer: Customer;
+  nameAlreadyExists: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<CustomerEditComponent>,
@@ -26,8 +28,15 @@ export class CustomerEditComponent implements OnInit {
   }
 
   onSave() {
-    this.customerService.saveCustomer(this.customer).subscribe((result) => {
-      this.dialogRef.close();
+    this.customerService.saveCustomer(this.customer).subscribe({
+      next: (result) => {
+        this.dialogRef.close(result);
+      },
+      error: (err) => {
+        if (err.status === 409) {
+          this.nameAlreadyExists = true;
+        }
+      },
     });
   }
 
