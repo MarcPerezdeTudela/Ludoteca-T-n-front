@@ -13,6 +13,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -31,12 +33,17 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     MatTableModule,
     MatCardModule,
+    MatDatepickerModule,
     HttpClientModule,
   ],
   providers: [
     {
       provide: MAT_DIALOG_DATA,
       useValue: {},
+    },
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: 'es-ES',
     },
   ],
 })

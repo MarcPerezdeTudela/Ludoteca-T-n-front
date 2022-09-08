@@ -10,6 +10,7 @@ import { AuthorModule } from './author/author.module';
 import { GameModule } from './game/game.module';
 import { CustomerModule } from './customer/customer.module';
 import { LoanModule } from './loan/loan.module';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { LoanModule } from './loan/loan.module';
     CustomerModule,
     BrowserAnimationsModule,
     LoanModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -71,12 +71,20 @@ export class LoanListComponent implements OnInit {
       pageable.pageNumber = event.pageIndex;
     }
 
-    this.loanService.getLoans(pageable).subscribe((data) => {
-      this.dataSource.data = data.content;
-      this.pageNumber = data.pageable.pageNumber;
-      this.pageSize = data.pageable.pageSize;
-      this.totalElements = data.totalElements;
-    });
+    const customerIdToFilter = this.filterCustomer
+      ? this.filterCustomer.id
+      : null;
+    const gameIdToFilter = this.filterGame ? this.filterGame.id : null;
+    const dateToFilter = this.filterDate ? this.filterDate : null;
+
+    this.loanService
+      .getLoans(pageable, gameIdToFilter, customerIdToFilter, dateToFilter)
+      .subscribe((data) => {
+        this.dataSource.data = data.content;
+        this.pageNumber = data.pageable.pageNumber;
+        this.pageSize = data.pageable.pageSize;
+        this.totalElements = data.totalElements;
+      });
   }
 
   onCleanFilter() {
@@ -84,13 +92,7 @@ export class LoanListComponent implements OnInit {
     this.filterGame = null;
     this.filterDate = null;
 
-    this.onSearch();
-  }
-
-  onSearch() {
-    let customerName = this.filterCustomer ? this.filterCustomer.name : null;
-    let gameTitle = this.filterGame ? this.filterGame.title : null;
-    let loanDate = this.filterDate ? this.filterDate.toISOString() : null;
+    this.loadPage();
   }
 
   createLoan() {
